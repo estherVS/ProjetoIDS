@@ -5,18 +5,27 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Sangue Salva"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity2"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".Conquistas"></activity>
+        <activity android:name=".LocalActivity" />
+        <activity android:name=".MenuActivity" />
+        <activity android:name=".SecondScreen" />
+        <activity android:name=".FirstScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Cadastro" />
+        <activity android:name=".MainActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
