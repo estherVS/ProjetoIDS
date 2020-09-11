@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "126726974774",
+    "firebase_url": "https://sangue-salva.firebaseio.com",
+    "project_id": "sangue-salva",
+    "storage_bucket": "sangue-salva.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:126726974774:android:d99eb902df5de720fa5797",
+        "android_client_info": {
+          "package_name": "com.example.projetoids"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "126726974774-s5op55ftioqc9a41qjtarlppk408lfhc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.projetoids",
+            "certificate_hash": "622fd40bd0886c3a964733281fbdcc6c2f3a2a79"
+          }
+        },
+        {
+          "client_id": "126726974774-dj18gbk20vc9iqpitmn94msaqa3gs3iv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBa3QcsSwKv5-u9IvBWFRmVrFW0rU1uBk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "126726974774-dj18gbk20vc9iqpitmn94msaqa3gs3iv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
