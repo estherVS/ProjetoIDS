@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,13 +20,15 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button button;
 
-    private FirebaseAuth mAuth;
-    TextView esq_senha;
     EditText ev_user;
     EditText ev_password;
     Button login;
+    TextView tvRegistrar;
+    TextView esq_senha;
+    String TAG = "MainActivity";
+
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,38 +36,43 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();
+
+        tvRegistrar = findViewById(R.id.tvRegistrar);
         esq_senha = findViewById(R.id.esq_senha);
         ev_user = findViewById(R.id.ev_user);
         ev_password = findViewById(R.id.ev_password);
         login = findViewById(R.id.login);
-
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                doLogin();
-            }
-        });
+        setListeners();
     }
 
-    private void doLogin() {
+        @Override
+        public void onStart() {
+            super.onStart();
+            FirebaseUser currentUser = mAuth.getCurrentUser();
+            startMenuActivity(currentUser);
+        }
 
-        String msg = "Iniciando Login";
-        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_LONG).show();
 
-        String email = ev_user.getText().toString();
-        String password = ev_password.getText().toString();
+    private void doLogin(String email, String password) {
+        Toast.makeText(MainActivity.this, "Iniciando Login.",
+                Toast.LENGTH_SHORT).show();
+
 
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             startMenuActivity(user);
-                        } else {
-                            Toast.makeText(MainActivity.this, "Falha ao realizar o login.",
-                                    Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), MenuActivity.class));
 
+                        } else {
+                            Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            Toast.makeText(MainActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                            startMenuActivity(null);
                         }
                     }
                 });
@@ -72,37 +80,53 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-
-
-        if (currentUser != null) {
-            startMenuActivity(currentUser);
-        } else {
-            String msg = "Erro ao autenticar usuário";
-            Toast.makeText(MainActivity.this, msg, Toast.LENGTH_LONG).show();
+    private void startMenuActivity(FirebaseUser firebaseUser){
+        if(firebaseUser == null){
+            Toast.makeText(MainActivity.this, "Erro.",Toast.LENGTH_LONG).show();
+            return;
         }
+        Toast.makeText(MainActivity.this, "Iniciando Tela principal do app.",Toast.LENGTH_LONG).show();
+
     }
 
-    private void startMenuActivity(FirebaseUser currentUser) {
-        String msg = "Iniciando Tela principal do app";
-        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_LONG).show();
-    }
+  /*private void recoverPassword(String email){
+        if(email == null){
+            Toast.makeText(MainActivity.this, "Adicione o email.",Toast.LENGTH_LONG).show();
+            return;
+        }
+        mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    Toast.makeText(MainActivity.this, "Adicione o email.",Toast.LENGTH_LONG).show();
+                    finish();
+                }else {
+                    Toast.makeText(MainActivity.this, "Erro ao enviar email de redefinição de senha.",Toast.LENGTH_LONG).show();
 
+                }
 
+            }
+        });
+    }*/
 
+    private void setListeners(){
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = ev_user.getText().toString();
+                String password = ev_password.getText().toString();
+                doLogin(email, password);
+
+            }
+        });
+        tvRegistrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Cadastro.class));
+            }
+        });
 
 }
 
+}
 
-/*/
-    public void onClick(View v) {
-                openActivity2();
-            }
-    public void openActivity2(){
-        Intent intent = new Intent(this,MenuActivity.class);
-        startActivity(intent);
-    }
-}/*/

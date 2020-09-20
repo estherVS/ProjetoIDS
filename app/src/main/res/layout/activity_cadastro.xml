@@ -30,10 +30,11 @@
         android:textStyle="bold" />
 
     <EditText
+        android:id="@+id/evName"
         android:layout_width="match_parent"
-        android:layout_marginRight="8dp"
         android:layout_height="44dp"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="8dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -47,11 +48,12 @@
         android:textStyle="bold" />
 
     <EditText
+        android:id="@+id/evMail"
         android:layout_width="match_parent"
         android:layout_height="44dp"
-        android:layout_marginRight="8dp"
         android:layout_marginLeft="10dp"
-        android:inputType="textEmailAddress"/>
+        android:layout_marginRight="8dp"
+        android:inputType="textEmailAddress" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -65,13 +67,14 @@
         android:textStyle="bold" />
 
     <EditText
+        android:id="@+id/evData"
         android:layout_width="match_parent"
         android:layout_height="44dp"
-        android:layout_marginRight="8dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginRight="8dp"
         android:ems="10"
-        android:inputType="date"
-        android:hint="dd/mm/aaaa" />
+        android:hint="dd/mm/aaaa"
+        android:inputType="date" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -85,15 +88,16 @@
         android:textStyle="bold" />
 
     <EditText
+        android:id="@+id/evSenha"
         android:layout_width="match_parent"
         android:layout_height="44dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="8dp"
         android:ems="10"
-        android:inputType="textPassword"/>
+        android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btRegistrar"
         android:layout_width="300dp"
         android:layout_height="55dp"
         android:layout_gravity="center_horizontal"
