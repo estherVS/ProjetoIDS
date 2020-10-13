@@ -75,6 +75,8 @@ public class MenuActivity extends AppCompatActivity{
     }
 
     private void openPerfilActivity() {
+        Intent intent = new Intent(this,PerfilActivity.class);
+        startActivity(intent);
     }
 
     private void openLocaisActivity() {

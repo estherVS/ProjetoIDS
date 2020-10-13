@@ -20,7 +20,6 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
-
     EditText ev_user;
     EditText ev_password;
     Button login;
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
         @Override
-        public void onStart() {
+        public void onStart(){
             super.onStart();
             FirebaseUser currentUser = mAuth.getCurrentUser();
             startMenuActivity(currentUser);
@@ -57,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, "Iniciando Login.",
                 Toast.LENGTH_SHORT).show();
 
-
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -67,26 +65,25 @@ public class MainActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             startMenuActivity(user);
                             startActivity(new Intent(getApplicationContext(), MenuActivity.class));
+                            finish();
 
                         } else {
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             Toast.makeText(MainActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-                            startMenuActivity(null);
+                                    startMenuActivity(null);
+                                    finish();
                         }
                     }
                 });
 
     }
 
-
     private void startMenuActivity(FirebaseUser firebaseUser){
         if(firebaseUser == null){
-            Toast.makeText(MainActivity.this, "Erro.",Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Erro",Toast.LENGTH_LONG).show();
             return;
         }
-        Toast.makeText(MainActivity.this, "Iniciando Tela principal do app.",Toast.LENGTH_LONG).show();
-
     }
 
   /*private void recoverPassword(String email){
@@ -104,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Erro ao enviar email de redefinição de senha.",Toast.LENGTH_LONG).show();
 
                 }
-
             }
         });
     }*/

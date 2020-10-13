@@ -48,7 +48,7 @@
                 android:src="@drawable/icon_local" />
 
             <TextView
-                android:id="@+id/endereco"
+                android:id="@+id/tv_endereco"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -68,7 +68,7 @@
                 android:id="@+id/telefone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/endereco"
+                android:layout_below="@id/tv_endereco"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="7dp"
                 android:text="(92) 3655 - 0100" />
@@ -135,7 +135,7 @@
                 android:src="@drawable/icon_local" />
 
             <TextView
-                android:id="@+id/endereco2"
+                android:id="@+id/tv_endereco2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
