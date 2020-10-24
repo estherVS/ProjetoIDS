@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MotivosActivity">
+
+<TextView
+    android:id="@+id/textView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="72dp"
+    android:text="Por que doar sangue?"
+    android:textColor="@color/primaryColor"
+    android:textSize="20dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.498"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+<androidx.cardview.widget.CardView
+    android:id="@+id/card1"
+    android:layout_below="@id/textView"
+    android:layout_width="match_parent"
+    android:layout_margin="30dp"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/primaryColor"
+    app:cardCornerRadius="15dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:layout_margin="4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="O sangue é vital para sobrevivência dos seres humanos. Por isso, quando alguém perde grande quantidade de sangue, seja por ter se acidentado ou tenha alguma doença do sangue, essa pessoa precisa de sangue doado para viver. "
+            android:textColor="#ffffffff"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="3dp"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="8dp" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
+
+<androidx.cardview.widget.CardView
+    android:layout_below="@id/card1"
+    android:layout_width="match_parent"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/primaryColor"
+    app:cardCornerRadius="15dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:layout_margin="4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="Atualmente Ainda temos um déficit de bolsas de sangue alto em Manaus. Para mudar essa realidade precisamos da sua colaboração. A sua doação de sangue além de poder salvar até quatro vidas, não irá prejudicar sua saúde."
+            android:textColor="#ffffffff"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="3dp"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="8dp" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
+
+</RelativeLayout>
