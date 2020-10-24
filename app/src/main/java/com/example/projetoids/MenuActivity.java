@@ -67,6 +67,8 @@ public class MenuActivity extends AppCompatActivity{
     }
 
     private void openInfoActivity() {
+        Intent intent = new Intent(this,InformacoesActivity.class);
+        startActivity(intent);
     }
 
     private void openConquistasActivity() {

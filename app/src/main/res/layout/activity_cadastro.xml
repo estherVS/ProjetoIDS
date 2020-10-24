@@ -55,6 +55,14 @@
         android:layout_marginRight="8dp"
         android:inputType="textEmailAddress" />
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -107,6 +115,5 @@
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="20sp" />
-
 
 </LinearLayout>
