@@ -97,6 +97,7 @@ public class Cadastro extends AppCompatActivity {
                                     String email = evMail.getText().toString().trim();
 
                                     User user = new User(name,email,birthDate);
+
                                     FirebaseDatabase.getInstance().getReference("Users")
                                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                             .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
