@@ -15,7 +15,11 @@
         android:roundIcon="@mipmap/iconapp_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MotivosActivity"></activity>
+        <activity android:name=".IntervaloActivity"></activity>
+        <activity android:name=".RecomendacoesActivity" />
+        <activity android:name=".ImpDefActivity" />
+        <activity android:name=".ImpTempActivity" />
+        <activity android:name=".MotivosActivity" />
         <activity android:name=".RequisitosActivity" />
         <activity android:name=".InformacoesActivity" />
         <!--

@@ -23,48 +23,46 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RequisitosActivity extends AppCompatActivity {
+public class RecomendacoesActivity extends AppCompatActivity {
 
-    RecyclerView reqRecyclerview;
-    ReqAdapter adapter;
-    List<ReqGetSet> listData;
+    RecyclerView recRecyclerview;
+    RecomendacoesActivity.RecAdapter adapter;
+    List<RecGetSet> listData;
     FirebaseDatabase FDB;
     DatabaseReference DBR;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_requisitos);
+        setContentView(R.layout.activity_recomendacoes);
 
-        reqRecyclerview = (RecyclerView)findViewById(R.id.requisitosView);
+        recRecyclerview = (RecyclerView)findViewById(R.id.recView);
 
-        reqRecyclerview.setHasFixedSize(true);
+        recRecyclerview.setHasFixedSize(true);
         RecyclerView.LayoutManager LM= new LinearLayoutManager(getApplicationContext());
-        reqRecyclerview.setLayoutManager(LM);
-        reqRecyclerview.setItemAnimator(new DefaultItemAnimator());
-        reqRecyclerview.addItemDecoration(new DividerItemDecoration(getApplicationContext(),LinearLayoutManager.VERTICAL));
+        recRecyclerview.setLayoutManager(LM);
+        recRecyclerview.setItemAnimator(new DefaultItemAnimator());
+        recRecyclerview.addItemDecoration(new DividerItemDecoration(getApplicationContext(),LinearLayoutManager.VERTICAL));
 
         listData = new ArrayList<>();
 
-        adapter = new ReqAdapter(listData);
+        adapter = new RecomendacoesActivity.RecAdapter(listData);
 
         FDB = FirebaseDatabase.getInstance();
-        GetReqDataFirebase();
-
+        GetRecomendacoesFirebase();
     }
 
-    void GetReqDataFirebase(){
-        DBR = FDB.getReference("recycler-req");
+    private void GetRecomendacoesFirebase() {
+        DBR = FDB.getReference("recycler-rec");
         DBR.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                ReqGetSet data = dataSnapshot.getValue(ReqGetSet.class);
+                RecGetSet data = dataSnapshot.getValue(RecGetSet.class);
                 //adding to ArrayList
                 listData.add(data);
                 //adding List into Adapter/Recyclerview
 
-                reqRecyclerview.setAdapter(adapter);
+                recRecyclerview.setAdapter(adapter);
 
             }
 
@@ -90,32 +88,31 @@ public class RequisitosActivity extends AppCompatActivity {
         });
     }
 
+    public class RecAdapter extends RecyclerView.Adapter<RecomendacoesActivity.RecAdapter.RecViewHolder>{
 
-    public class ReqAdapter extends RecyclerView.Adapter<ReqAdapter.ReqViewHolder>{
+        List<RecGetSet> listArray;
 
-        List<ReqGetSet> listArray;
-
-        public ReqAdapter(List<ReqGetSet> List){
+        public RecAdapter(List<RecGetSet> List){
             this.listArray = List;
         }
 
         @Override
-        public ReqAdapter.ReqViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        public RecomendacoesActivity.RecAdapter.RecViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.info_item,parent,false);
-            return new ReqViewHolder(view);
+            return new RecomendacoesActivity.RecAdapter.RecViewHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(@NonNull ReqViewHolder holder, int position) {
-            ReqGetSet data = listArray.get(position);
-            holder.MyText.setText(data.gettreq());
+        public void onBindViewHolder(@NonNull RecomendacoesActivity.RecAdapter.RecViewHolder holder, int position) {
+            RecGetSet data = listArray.get(position);
+            holder.MyText.setText(data.getrec());
         }
 
-        public class ReqViewHolder extends RecyclerView.ViewHolder{
+        public class RecViewHolder extends RecyclerView.ViewHolder{
 
             TextView MyText;
 
-            public ReqViewHolder(@NonNull View itemView) {
+            public RecViewHolder(@NonNull View itemView) {
                 super(itemView);
                 MyText = (TextView)itemView.findViewById(R.id.txtInfo);
             }
@@ -127,4 +124,3 @@ public class RequisitosActivity extends AppCompatActivity {
         }
     }
 }
-

@@ -23,48 +23,47 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RequisitosActivity extends AppCompatActivity {
+public class ImpTempActivity extends AppCompatActivity {
 
-    RecyclerView reqRecyclerview;
-    ReqAdapter adapter;
-    List<ReqGetSet> listData;
+    RecyclerView imptRecyclerview;
+    ImpTempActivity.ImpTempAdapter adapter;
+    List<ImpTempGetSet> listData;
     FirebaseDatabase FDB;
     DatabaseReference DBR;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_requisitos);
+        setContentView(R.layout.activity_imp_temp);
 
-        reqRecyclerview = (RecyclerView)findViewById(R.id.requisitosView);
+        imptRecyclerview = (RecyclerView)findViewById(R.id.impTempView);
 
-        reqRecyclerview.setHasFixedSize(true);
+        imptRecyclerview.setHasFixedSize(true);
         RecyclerView.LayoutManager LM= new LinearLayoutManager(getApplicationContext());
-        reqRecyclerview.setLayoutManager(LM);
-        reqRecyclerview.setItemAnimator(new DefaultItemAnimator());
-        reqRecyclerview.addItemDecoration(new DividerItemDecoration(getApplicationContext(),LinearLayoutManager.VERTICAL));
+        imptRecyclerview.setLayoutManager(LM);
+        imptRecyclerview.setItemAnimator(new DefaultItemAnimator());
+        imptRecyclerview.addItemDecoration(new DividerItemDecoration(getApplicationContext(),LinearLayoutManager.VERTICAL));
 
         listData = new ArrayList<>();
 
-        adapter = new ReqAdapter(listData);
+        adapter = new ImpTempActivity.ImpTempAdapter(listData);
 
         FDB = FirebaseDatabase.getInstance();
-        GetReqDataFirebase();
+        GetImpTempDataFirebase();
 
     }
 
-    void GetReqDataFirebase(){
-        DBR = FDB.getReference("recycler-req");
+    private void GetImpTempDataFirebase() {
+        DBR = FDB.getReference("recycler-impt");
         DBR.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                ReqGetSet data = dataSnapshot.getValue(ReqGetSet.class);
+                ImpTempGetSet data = dataSnapshot.getValue(ImpTempGetSet.class);
                 //adding to ArrayList
                 listData.add(data);
                 //adding List into Adapter/Recyclerview
 
-                reqRecyclerview.setAdapter(adapter);
+                imptRecyclerview.setAdapter(adapter);
 
             }
 
@@ -90,32 +89,31 @@ public class RequisitosActivity extends AppCompatActivity {
         });
     }
 
+    public class ImpTempAdapter extends RecyclerView.Adapter<ImpTempActivity.ImpTempAdapter.ImpTViewHolder>{
 
-    public class ReqAdapter extends RecyclerView.Adapter<ReqAdapter.ReqViewHolder>{
+        List<ImpTempGetSet> listArray;
 
-        List<ReqGetSet> listArray;
-
-        public ReqAdapter(List<ReqGetSet> List){
+        public ImpTempAdapter(List<ImpTempGetSet> List){
             this.listArray = List;
         }
 
         @Override
-        public ReqAdapter.ReqViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        public ImpTempActivity.ImpTempAdapter.ImpTViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.info_item,parent,false);
-            return new ReqViewHolder(view);
+            return new ImpTempActivity.ImpTempAdapter.ImpTViewHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(@NonNull ReqViewHolder holder, int position) {
-            ReqGetSet data = listArray.get(position);
-            holder.MyText.setText(data.gettreq());
+        public void onBindViewHolder(@NonNull ImpTempActivity.ImpTempAdapter.ImpTViewHolder holder, int position) {
+            ImpTempGetSet data = listArray.get(position);
+            holder.MyText.setText(data.gettexto());
         }
 
-        public class ReqViewHolder extends RecyclerView.ViewHolder{
+        public class ImpTViewHolder extends RecyclerView.ViewHolder{
 
             TextView MyText;
 
-            public ReqViewHolder(@NonNull View itemView) {
+            public ImpTViewHolder(@NonNull View itemView) {
                 super(itemView);
                 MyText = (TextView)itemView.findViewById(R.id.txtInfo);
             }
@@ -127,4 +125,3 @@ public class RequisitosActivity extends AppCompatActivity {
         }
     }
 }
-

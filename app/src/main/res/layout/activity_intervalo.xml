@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MotivosActivity">
+    tools:context=".IntervaloActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -13,7 +13,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="72dp"
-        android:text="Por que doar sangue?"
+        android:layout_marginBottom="10dp"
+        android:text="Intervalo entre as doações:"
         android:textColor="@color/primaryColor"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,11 +31,16 @@
 
         <ImageView
             android:id="@+id/marcgota"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
             android:padding="2dp"
-            android:src="@drawable/gota_sangue"
-            android:layout_margin="5dp"/>
+            android:src="@drawable/ic_fem" />
 
         <TextView
             android:id="@+id/txtInfo1"
@@ -43,7 +49,7 @@
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/marcgota"
             android:layout_toRightOf="@+id/marcgota"
-            android:text="O sangue é vital para sobrevivência dos seres humanos. Por isso, quando alguém perde grande quantidade de sangue, seja por ter se acidentado ou tenha alguma doença do sangue, essa pessoa precisa de sangue doado para viver. "
+            android:text="Mulheres - 90 dias (máximo de 03 doações nos últimos 12 meses)."
             android:textColor="#000000"
             android:layout_marginStart="8dp"
             android:layout_marginTop="3dp"
@@ -55,6 +61,7 @@
 
     <RelativeLayout
         android:layout_below="@id/txi1"
+        android:layout_margin="4dp"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -62,11 +69,16 @@
 
         <ImageView
             android:id="@+id/marcgota2"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
             android:padding="2dp"
-            android:src="@drawable/gota_sangue"
-            android:layout_margin="5dp"/>
+            android:src="@drawable/ic_masc" />
 
         <TextView
             android:id="@+id/txtInfo2"
@@ -75,7 +87,7 @@
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/marcgota2"
             android:layout_toRightOf="@+id/marcgota2"
-            android:text="Atualmente Ainda temos um déficit de bolsas de sangue alto em Manaus. Para mudar essa realidade precisamos da sua colaboração. A sua doação de sangue além de poder salvar até quatro vidas, não irá prejudicar sua saúde."
+            android:text="Homens - 60 dias (máximo de 04 doações nos últimos 12 meses)."
             android:textColor="#000000"
             android:layout_marginStart="8dp"
             android:layout_marginTop="3dp"
