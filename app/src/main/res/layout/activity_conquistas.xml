@@ -1,56 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Conquistas">
 
-    <FrameLayout
-        android:id="@+id/frame_layout"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp">
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primaryColor">
 
-        <ImageView
-            android:id="@+id/coracao"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/coracao"/>
-
-        <TextView
-            android:id="@+id/cont_conq"
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabEstrela"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="0"
-            android:textColor="#ffffffff"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:text="Estrelas"
+            android:icon="@drawable/ic_estrela" />
 
-    </FrameLayout>
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabMedalha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medalhas"
+            android:icon="@drawable/ic_med"/>
 
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabTrofeu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Troféus"
+            android:icon="@drawable/trof" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="7dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="20dp"
-        android:layout_toEndOf="@+id/frame_layout"
-        android:layout_toRightOf="@+id/frame_layout"
-        android:text="Conquistas"
-        android:textColor="@color/primaryColor"
-        android:textSize="19dp" />
+    </com.google.android.material.tabs.TabLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/ConquistasView"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
-        android:layout_below="@+id/frame_layout"
-        android:background="#ffffff"
-        android:padding="2dp"
-        android:scrollbars="vertical" />
-</RelativeLayout>
+        android:layout_height="match_parent">
+    </androidx.viewpager.widget.ViewPager>
+
+</LinearLayout>
