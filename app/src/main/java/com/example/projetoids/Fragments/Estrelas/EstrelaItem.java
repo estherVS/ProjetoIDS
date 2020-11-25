@@ -1,11 +1,11 @@
-package com.example.projetoids;
+package com.example.projetoids.Fragments.Estrelas;
 
-public class ConquistaItem {
+public class EstrelaItem {
     private int mImageResource;
     private String mText1;
     private String mText2;
 
-    public ConquistaItem(int imageResource, String text1, String text2){
+    public EstrelaItem(int imageResource, String text1, String text2){
         mImageResource = imageResource;
         mText1 = text1;
         mText2 = text2;

@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.example.projetoids.Fragments.Estrelas.Estrelas;
+import com.example.projetoids.Fragments.Medalhas;
+import com.example.projetoids.Fragments.Trofeus;
+
 public class PagerController extends FragmentPagerAdapter {
 
     int numtabs;

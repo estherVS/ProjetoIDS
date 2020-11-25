@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MenuActivity extends AppCompatActivity{
 
     private CardView infoCard,conqCard,perfilCard,locaisCard,campCard,expCard;
@@ -90,5 +92,7 @@ public class MenuActivity extends AppCompatActivity{
     }
 
     private void openExperienciasActivity() {
+        Intent intent = new Intent(this,ExperienciasActivity.class);
+        startActivity(intent);
     }
 }

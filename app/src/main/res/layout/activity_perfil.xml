@@ -23,24 +23,12 @@
             android:layout_marginTop="40dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/img_photo"
+                android:id="@+id/img_photop"
                 android:layout_width="130dp"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 android:src="@drawable/ft_perfil" />
 
-
-            <ImageButton
-                android:id="@+id/btn_select_photo"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:elevation="6dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_alignParentBottom="true"
-                android:background="@drawable/bg_btn_img_rounded"
-                android:src="@drawable/ic_camera" />
         </RelativeLayout>
     </FrameLayout>
 
@@ -52,6 +40,12 @@
         android:text="Nome"
         android:textSize="24dp"
         android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_perfil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"/>
 
 
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.example.projetoids;
+package com.example.projetoids.Fragments.Estrelas;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,17 +9,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.projetoids.R;
+
 import java.util.ArrayList;
+import java.util.List;
 
-public class ConquistasAdapter extends RecyclerView.Adapter <ConquistasAdapter.ConquistasViewHolder>{
-    public ArrayList<ConquistaItem> mConquistasList;
+public class EstrelasAdapter extends RecyclerView.Adapter <EstrelasAdapter.EstrelasViewHolder>{
+    public List<EstrelaItem> mConquistasList;
 
-    public static class ConquistasViewHolder extends RecyclerView.ViewHolder{
+    public static class EstrelasViewHolder extends RecyclerView.ViewHolder{
         public ImageView mImageView;
         public TextView mTextView1;
         public TextView mTextView2;
 
-        public ConquistasViewHolder(@NonNull View itemView) {
+        public EstrelasViewHolder(@NonNull View itemView) {
             super(itemView);
 
             mImageView= itemView.findViewById(R.id.imageView);
@@ -28,21 +31,20 @@ public class ConquistasAdapter extends RecyclerView.Adapter <ConquistasAdapter.C
         }
     }
 
-    public ConquistasAdapter(ArrayList<ConquistaItem> exampleList){
+    public EstrelasAdapter(List<EstrelaItem> exampleList){
         mConquistasList = exampleList;
     }
 
     @NonNull
     @Override
-    public ConquistasViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public EstrelasViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.conquista_item,parent, false);
-        ConquistasViewHolder evh = new ConquistasViewHolder(v);
-        return evh;
+        return new EstrelasViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ConquistasViewHolder holder, int position) {
-        ConquistaItem currentItem = mConquistasList.get(position);
+    public void onBindViewHolder(@NonNull EstrelasViewHolder holder, int position) {
+        EstrelaItem currentItem = mConquistasList.get(position);
 
         holder.mImageView.setImageResource(currentItem.getImageResource());
         holder.mTextView1.setText(currentItem.getmText1());

@@ -15,7 +15,9 @@
         android:roundIcon="@mipmap/iconapp_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".IntervaloActivity"></activity>
+        <activity android:name=".NewPostActivity"></activity>
+        <activity android:name=".ExperienciasActivity" />
+        <activity android:name=".IntervaloActivity" />
         <activity android:name=".RecomendacoesActivity" />
         <activity android:name=".ImpDefActivity" />
         <activity android:name=".ImpTempActivity" />

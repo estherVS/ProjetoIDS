@@ -1,34 +1,54 @@
 package com.example.projetoids;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.projetoids.Classes.User;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.UUID;
 
 public class Cadastro extends AppCompatActivity {
 
     private EditText evName, evData, evMail, evSenha;
     private Button btRegistrar;
     private FirebaseAuth mAuth;
-    /*private ProgressBar progressBar;*/
+    ProgressDialog progressDialog;
+    private ImageButton mBtnSelectPhoto;
+    private Uri mSelectedUri;
+    private ImageView mImgPhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +60,15 @@ public class Cadastro extends AppCompatActivity {
         evMail = findViewById(R.id.evMail);
         evSenha = findViewById(R.id.evSenha);
         btRegistrar = findViewById(R.id.btRegistrar);
-        //progressBar= findViewById(R.id.progressBar);
+        mBtnSelectPhoto = findViewById(R.id.btn_select_photo);
+        mImgPhoto = findViewById(R.id.img_photo);
+
+        mBtnSelectPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectPhoto();
+            }
+        });
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -83,7 +111,12 @@ public class Cadastro extends AppCompatActivity {
                     return;
 
                 }
-                //
+                progressDialog = new ProgressDialog(Cadastro.this);
+                progressDialog.show();
+                progressDialog.setContentView(R.layout.progress_dialog);
+                progressDialog.getWindow().setBackgroundDrawableResource(
+                        android.R.color.transparent
+                );
 
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -92,36 +125,80 @@ public class Cadastro extends AppCompatActivity {
 
                                 if (task.isSuccessful()) {
 
-                                    String name = evName.getText().toString().trim();
-                                    String birthDate = evData.getText().toString().trim();
-                                    String email = evMail.getText().toString().trim();
+                                    String filename = UUID.randomUUID().toString();
+                                    final StorageReference ref = FirebaseStorage.getInstance().getReference("/images/" + filename);
+                                    ref.putFile(mSelectedUri)
+                                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                                @Override
+                                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                    ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                                        @Override
+                                                        public void onSuccess(Uri uri) {
+                                                            Log.i("Teste",uri.toString());
 
-                                    User user = new User(name,email,birthDate);
+                                                            String profileUrl = uri.toString();
+                                                            String name = evName.getText().toString().trim();
+                                                            String birthDate = evData.getText().toString().trim();
+                                                            String email = evMail.getText().toString().trim();
 
-                                    FirebaseDatabase.getInstance().getReference("Users")
-                                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
+                                                            User user = new User(profileUrl,name,email,birthDate);
 
-                                            if(task.isSuccessful()){
-                                                Toast.makeText(Cadastro.this, "Usuário cadastrado com sucesso!", Toast.LENGTH_LONG).show();
-                                                //progressbar.setVisibility(view.GONE);
-                                            }else{
-                                                Toast.makeText(Cadastro.this, "Falha ao cadastrar usuário1!", Toast.LENGTH_LONG).show();
-                                                //progressbar.setVisibility(view.GONE);
-                                            }
-                                        }
-                                    });
+                                                            FirebaseDatabase.getInstance().getReference("Users")
+                                                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                @Override
+                                                                public void onComplete(@NonNull Task<Void> task) {
+
+                                                                    if(task.isSuccessful()){
+                                                                        Toast.makeText(Cadastro.this, "Usuário cadastrado com sucesso!", Toast.LENGTH_LONG).show();
+                                                                        progressDialog.dismiss();
+
+                                                                        Intent intent=new Intent(Cadastro.this,MenuActivity.class);
+                                                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                                                                        startActivity(intent);
+                                                                    }else{
+                                                                        Toast.makeText(Cadastro.this, "Falha ao cadastrar usuário1!", Toast.LENGTH_LONG).show();
+                                                                        progressDialog.dismiss();
+                                                                    }
+                                                                }
+                                                            });
+                                                        }
+                                                    });
+                                                }
+                                            });
+
+
 
                                 }else{
                                     Toast.makeText(Cadastro.this, "Falha ao cadastrar usuário!", Toast.LENGTH_LONG).show();
-                                    //progressbar.setVisibility(view.GONE);
+                                    progressDialog.dismiss();
                                 }
                             }
                         });
             }
         });
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==0){
+            mSelectedUri = data.getData();
+
+            Bitmap bitmap = null;
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), mSelectedUri);
+                mImgPhoto.setImageDrawable(new BitmapDrawable(bitmap));
+            } catch (IOException e) {
+
+            }
+        }
+    }
+
+    private void selectPhoto() {
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent,0);
     }
 
     private DatePickerDialog getDatePickerDialogForToday(DatePickerDialog.OnDateSetListener onDateSetListener){

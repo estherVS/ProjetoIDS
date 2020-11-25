@@ -1,4 +1,4 @@
-package com.example.projetoids;
+package com.example.projetoids.Classes;
 
 public class ImpTempGetSet {
     String texto;
