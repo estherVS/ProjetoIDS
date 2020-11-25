@@ -36,14 +36,14 @@
             android:src="@drawable/gota_sangue"
             android:layout_margin="5dp"/>
 
-        <TextView
+        <me.biubiubiu.justifytext.library.JustifyTextView
             android:id="@+id/txtInfo1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/marcgota"
             android:layout_toRightOf="@+id/marcgota"
-            android:text="O sangue é vital para sobrevivência dos seres humanos. Por isso, quando alguém perde grande quantidade de sangue, seja por ter se acidentado ou tenha alguma doença do sangue, essa pessoa precisa de sangue doado para viver. "
+            android:text="O sangue é vital para sobrevivência dos seres humanos. Por isso, quando alguém perde grande quantidade de sangue, seja por ter se acidentado ou tenha alguma doença do sangue, essa pessoa precisa de sangue doado para viver.\n"
             android:textColor="#000000"
             android:layout_marginStart="8dp"
             android:layout_marginTop="3dp"
@@ -68,14 +68,14 @@
             android:src="@drawable/gota_sangue"
             android:layout_margin="5dp"/>
 
-        <TextView
+        <me.biubiubiu.justifytext.library.JustifyTextView
             android:id="@+id/txtInfo2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/marcgota2"
             android:layout_toRightOf="@+id/marcgota2"
-            android:text="Atualmente Ainda temos um déficit de bolsas de sangue alto em Manaus. Para mudar essa realidade precisamos da sua colaboração. A sua doação de sangue além de poder salvar até quatro vidas, não irá prejudicar sua saúde."
+            android:text="Atualmente Ainda temos um déficit de bolsas de sangue alto em Manaus. Para mudar essa realidade precisamos da sua colaboração. A sua doação de sangue além de poder salvar até quatro vidas, não irá prejudicar sua saúde.\n"
             android:textColor="#000000"
             android:layout_marginStart="8dp"
             android:layout_marginTop="3dp"
