@@ -16,6 +16,8 @@ public class InformacoesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_informacoes);
 
+
+
         bt1 = findViewById(R.id.btInfo1);
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
