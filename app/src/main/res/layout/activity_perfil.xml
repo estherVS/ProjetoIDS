@@ -37,15 +37,182 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textColor="#47525E"
         android:text="Nome"
         android:textSize="24dp"
         android:textStyle="bold" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_perfil"
+    <ScrollView
+        android:layout_marginTop="14dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"/>
+        android:layout_height="wrap_content">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/data_nasc_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginTop="15dp"
+                app:cardBackgroundColor="#EFF2F7">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:src="@drawable/img_nasc"
+                        android:id="@+id/img_nasc"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:padding="2dp"
+                        android:layout_margin="5dp"/>
+
+                    <TextView
+                        android:id="@+id/data_titulo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toEndOf="@+id/img_nasc"
+                        android:layout_toRightOf="@+id/img_nasc"
+                        android:text="Data de Nascimento"
+                        android:textColor="#47525E"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/p_nasc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/data_titulo"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_toEndOf="@+id/img_nasc"
+                        android:layout_toRightOf="@+id/img_nasc"
+                        android:textColor="#8492A6"
+                        android:textSize="16sp" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/email_card"
+                android:layout_below="@id/data_nasc_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginTop="15dp"
+                app:cardBackgroundColor="#EFF2F7">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:src="@drawable/icone_email"
+                        android:id="@+id/img_email"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:padding="2dp"
+                        android:layout_margin="5dp"/>
+
+                    <TextView
+                        android:id="@+id/email_titulo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toEndOf="@+id/img_email"
+                        android:layout_toRightOf="@+id/img_email"
+                        android:text="Email"
+                        android:textColor="#47525E"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/p_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/email_titulo"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_toEndOf="@+id/img_email"
+                        android:layout_toRightOf="@+id/img_email"
+                        android:textColor="#8492A6"
+                        android:textSize="16sp" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/tpSangue_card"
+                android:layout_below="@id/email_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="#EFF2F7">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:src="@drawable/perfil"
+                        android:id="@+id/img_nome"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:padding="2dp"
+                        android:layout_margin="5dp"/>
+
+                    <TextView
+                        android:id="@+id/nome_titulo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_toEndOf="@+id/img_nome"
+                        android:layout_toRightOf="@+id/img_nome"
+                        android:text="Tipo Sanguíneo"
+                        android:textColor="#47525E"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="5dp"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="8dp" />
+
+                    <TextView
+                        android:id="@+id/p_nome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/nome_titulo"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_toEndOf="@+id/img_nome"
+                        android:layout_toRightOf="@+id/img_nome"
+                        android:textColor="#8492A6"
+                        android:textSize="16sp" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </LinearLayout>
