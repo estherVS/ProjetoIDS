@@ -89,6 +89,8 @@ public class MenuActivity extends AppCompatActivity{
     }
 
     private void openCampanhasActivity() {
+        Intent i= new Intent (this, CampanhasActivity.class);
+        startActivity(i);
     }
 
     private void openExperienciasActivity() {

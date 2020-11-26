@@ -45,6 +45,8 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview-selection:1.0.0'
     implementation 'androidx.fragment:fragment:1.2.5'
     implementation 'com.google.android.material:material:1.2.1'
-    compile 'me.biubiubiu.justifytext:library:1.1'
+    implementation 'me.biubiubiu.justifytext:library:1.1'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
 }

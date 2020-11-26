@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/iconapp_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NewPostActivity"></activity>
+
+        <activity android:name=".NewPostActivity" />
         <activity android:name=".ExperienciasActivity" />
         <activity android:name=".IntervaloActivity" />
         <activity android:name=".RecomendacoesActivity" />
@@ -39,12 +40,14 @@
         <activity
             android:name=".MapActivity"
             android:label="@string/title_activity_map" />
+        <activity android:name=".CampanhasActivity"/>
         <activity android:name=".PerfilActivity" />
         <activity android:name=".Conquistas" />
         <activity android:name=".LocalActivity" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".SecondScreen" />
         <activity android:name=".FirstScreen">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
