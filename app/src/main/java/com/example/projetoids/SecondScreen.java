@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class SecondScreen extends AppCompatActivity {
     private Button login;
     private Button cadastro;
@@ -35,12 +37,13 @@ public class SecondScreen extends AppCompatActivity {
 
     public void openMainActivity(){
         Intent intent = new Intent(SecondScreen.this,MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 
     public void openActivity2(){
         Intent intent = new Intent(SecondScreen.this, Cadastro.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
-
 }

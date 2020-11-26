@@ -141,7 +141,7 @@ public class Cadastro extends AppCompatActivity {
                                                             String birthDate = evData.getText().toString().trim();
                                                             String email = evMail.getText().toString().trim();
 
-                                                            User user = new User(profileUrl,name,email,birthDate);
+                                                            User user = new User(profileUrl,name,birthDate,email);
 
                                                             FirebaseDatabase.getInstance().getReference("Users")
                                                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -151,7 +151,6 @@ public class Cadastro extends AppCompatActivity {
 
                                                                     if(task.isSuccessful()){
                                                                         Toast.makeText(Cadastro.this, "Usuário cadastrado com sucesso!", Toast.LENGTH_LONG).show();
-                                                                        progressDialog.dismiss();
 
                                                                         Intent intent=new Intent(Cadastro.this,MenuActivity.class);
                                                                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);

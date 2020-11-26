@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MenuActivity extends AppCompatActivity{
 
@@ -97,4 +98,28 @@ public class MenuActivity extends AppCompatActivity{
         Intent intent = new Intent(this,ExperienciasActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+    @Override
+    protected void onStart() {
+        verifyAuthentication();
+        super.onStart();
+    }
+
+    private void verifyAuthentication() {
+        FirebaseUser user =FirebaseAuth.getInstance().getCurrentUser();
+        if(user != null){
+
+        }else{
+            Intent next = new Intent(MenuActivity.this, SecondScreen.class);
+            next.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(next);
+        }
+    }
+
 }

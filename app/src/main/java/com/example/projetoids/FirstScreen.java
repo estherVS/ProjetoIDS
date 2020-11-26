@@ -5,10 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Menu;
 import android.view.View;
 
-import com.google.firebase.auth.FirebaseAuth;
 
 public class FirstScreen extends AppCompatActivity {
     private static int SPLASH_TIME_OUT=2000;
@@ -30,19 +28,10 @@ public class FirstScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
-                verifyAuthentication();
+                Intent next = new Intent(FirstScreen.this, MenuActivity.class);
+                next.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(next);
             }
         },SPLASH_TIME_OUT);
-    }
-    private void verifyAuthentication() {
-        if(FirebaseAuth.getInstance().getCurrentUser()!= null){
-            Intent next = new Intent(FirstScreen.this, SecondScreen.class);
-            next.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(next);
-        }else{
-            Intent next = new Intent(FirstScreen.this, MenuActivity.class);
-            next.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(next);
-        }
     }
 }

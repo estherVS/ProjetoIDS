@@ -9,8 +9,8 @@ public class User {
     public User(String profileUrl,String name,String birthDate,String email){
         this.profileUrl=profileUrl;
         this.name=name;
-        this.email=email;
         this.birthDate=birthDate;
+        this.email=email;
     }
 
     public String getProfileUrl(){
