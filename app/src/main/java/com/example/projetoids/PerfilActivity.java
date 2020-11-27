@@ -35,7 +35,7 @@ public class PerfilActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
-
+        setTitle("Perfil");
         progressDialog = new ProgressDialog(PerfilActivity.this);
         progressDialog.show();
         progressDialog.setContentView(R.layout.progress_dialog);

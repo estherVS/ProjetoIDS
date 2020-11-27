@@ -16,6 +16,7 @@ public class InformacoesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_informacoes);
 
+        setTitle("Informações");
 
 
         bt1 = findViewById(R.id.btInfo1);

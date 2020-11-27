@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = ev_user.getText().toString().trim();
                 String password = ev_password.getText().toString().trim();
-
+                setTitle("Menu Principal");
                 if(email.isEmpty()){
                     ev_user.setError("Por favor, preencha o campo");
                     ev_user.requestFocus();

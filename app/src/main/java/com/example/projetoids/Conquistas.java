@@ -21,6 +21,8 @@ public class Conquistas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conquistas);
 
+        setTitle("Conquistas");
+
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
 

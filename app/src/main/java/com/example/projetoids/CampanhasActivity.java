@@ -36,6 +36,8 @@ public class CampanhasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_campanha);
 
+        setTitle("Campanhas");
+
         recyclerView = findViewById(R.id.recyclerView);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);

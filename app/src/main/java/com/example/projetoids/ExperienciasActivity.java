@@ -38,6 +38,8 @@ public class ExperienciasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_experiencias);
 
+        setTitle("Experiências");
+
         addPost=findViewById(R.id.btn_newPost);
         expRecycler = findViewById(R.id.expRecycler);
         expRecycler.setHasFixedSize(true);

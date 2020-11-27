@@ -17,6 +17,7 @@ public class LocalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_local);
 
+        setTitle("Locais");
         local1 = findViewById(R.id.tv_endereco);
 
         local1.setOnClickListener(new View.OnClickListener() {
