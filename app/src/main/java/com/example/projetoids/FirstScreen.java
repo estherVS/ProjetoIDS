@@ -28,7 +28,7 @@ public class FirstScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
-                Intent next = new Intent(FirstScreen.this, MenuActivity.class);
+                Intent next = new Intent(FirstScreen.this, SecondScreen.class);
                 next.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(next);
             }
