@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -72,6 +73,7 @@ public class ExperienciasActivity extends AppCompatActivity {
                 ClearAll();
                 for(DataSnapshot snapshot1: snapshot.getChildren()){
                     PostExp postExp = new PostExp();
+
 
                     postExp.setFoto_usuario(snapshot1.child("foto_usuario").getValue().toString());
                     postExp.setN_usuario(snapshot1.child("n_usuario").getValue().toString());

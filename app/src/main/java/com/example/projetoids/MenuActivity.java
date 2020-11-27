@@ -105,6 +105,7 @@ public class MenuActivity extends AppCompatActivity{
         finish();
     }
 
+    /*
     @Override
     protected void onStart() {
         verifyAuthentication();
@@ -120,6 +121,6 @@ public class MenuActivity extends AppCompatActivity{
             next.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(next);
         }
-    }
+    }*/
 
 }
